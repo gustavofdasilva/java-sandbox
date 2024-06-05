@@ -13,14 +13,14 @@ public class FirstService {
     private final Environment environment;
     @Value("${my.prop}")
     private String customProperty;
-
+    
     public String getCustomProperty() {
         return customProperty;
     }
 
     @Autowired
     public FirstService(
-        @Qualifier("secondFirstClass") FirstClass firstClass, 
+        @Qualifier("coolBean") FirstClass firstClass, 
         Environment environment) {
         this.firstClass = firstClass;
         this.environment = environment;
