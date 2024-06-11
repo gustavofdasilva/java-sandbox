@@ -1,9 +1,13 @@
 package com.gustavofdasilva.sandbox;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -25,6 +29,16 @@ public class Student {
 
     @Column(name="age", length=100)
     private Integer age;
+
+    @OneToOne(
+        mappedBy="student",
+        cascade = CascadeType.ALL
+    )
+    private StudentProfile profile;
+
+    @ManyToOne()
+    @JoinColumn(name="school_id")
+    private School school;
 
     public Student() {
     }
@@ -65,6 +79,22 @@ public class Student {
     }
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public School getSchool() {
+        return school;
+    }
+
+    public void setSchool(School school) {
+        this.school = school;
+    }
+
+    public StudentProfile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(StudentProfile profile) {
+        this.profile = profile;
     }
 
     
