@@ -9,24 +9,40 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class FirstController {
+public class StudentController {
     private final StudentRepo repo;
     
-    public FirstController(StudentRepo repo) {
+    public StudentController(StudentRepo repo) {
         this.repo = repo;
     }
 
     @GetMapping("/helloworld")
     public String sayHello() {
-        Student student = new Student();
         return "HELLO! from my first controller!";
     }
 
-    @PostMapping("/postStudent")
-    public Student postStudent(
-        @RequestBody Student student
+    @PostMapping("/student")
+    public StudentResponseDTO postStudent(
+        @RequestBody StudentDTO student
     ) {
-        return repo.save(student);
+        repo.save(toStudent(student));
+
+        return toStudentRes(student);
+    }
+    
+    private Student toStudent(StudentDTO dto) {
+        var student = new Student();
+        student.setFirstName(dto.firstName());
+        student.setLastName(dto.lastName());
+        student.setEmail(dto.email());
+        var school = new School();
+        school.setId(dto.school_id());
+        student.setSchool(school);
+        return student;
+    }
+
+    private StudentResponseDTO toStudentRes(StudentDTO dto) {
+        return new StudentResponseDTO(dto.firstName(), dto.lastName(), dto.email());
     }
 
     @GetMapping("/students") 

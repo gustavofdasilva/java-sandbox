@@ -2,6 +2,8 @@ package com.gustavofdasilva.sandbox;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -20,6 +22,7 @@ public class School {
     @OneToMany(
         mappedBy="school"
     )
+    @JsonManagedReference // Parent is in charge to serialize the child
     private List<Student> students;
 
     public School() {
