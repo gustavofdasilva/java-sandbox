@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class StudentController {
-    private final StudentRepo repo;
     
-    public StudentController(StudentRepo repo) {
-        this.repo = repo;
+    private final StudentService studentService;
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
     }
 
     @GetMapping("/helloworld")
@@ -25,56 +25,33 @@ public class StudentController {
     public StudentResponseDTO postStudent(
         @RequestBody StudentDTO student
     ) {
-        repo.save(toStudent(student));
-
-        return toStudentRes(student);
-    }
-    
-    private Student toStudent(StudentDTO dto) {
-        var student = new Student();
-        student.setFirstName(dto.firstName());
-        student.setLastName(dto.lastName());
-        student.setEmail(dto.email());
-        var school = new School();
-        school.setId(dto.school_id());
-        student.setSchool(school);
-        return student;
-    }
-
-    private StudentResponseDTO toStudentRes(StudentDTO dto) {
-        return new StudentResponseDTO(dto.firstName(), dto.lastName(), dto.email());
+       return studentService.postStudent(student);
     }
 
     @GetMapping("/students") 
-    public List<Student> getStudents() {
-        return repo.findAll();
+    public List<StudentResponseDTO> getStudents() {
+        return studentService.getStudents();
     }
 
-    @GetMapping("/student/{id}")
-    public Student getStudentById(
+    @GetMapping("/students/{id}")
+    public StudentResponseDTO getStudentById(
         @PathVariable("id") Integer id
     ) {
-        return repo.findById(id).orElse(null);
+        return studentService.getStudentById(id);
     }
 
     @GetMapping("/students/{filter}")
-    public List<Student> getAllStudentsByName(
+    public List<StudentResponseDTO> getAllStudentsByName(
         @PathVariable("filter") String filter
     ) {
-        return repo.findAllByFirstNameContaining(filter);
+        return studentService.getAllStudentsByName(filter);
     }
     
-
-    @DeleteMapping("/student/{id}") 
+    @DeleteMapping("/students/{id}") 
     public String deleteStudentById(
         @PathVariable("id") Integer id
     ) {
-        try {
-            repo.deleteById(id);
-            return "Student Deleted!";
-        } catch (Exception e) {
-            return "Couldn't find any student by this id...";
-        }
+        return studentService.deleteStudentById(id);
     }
 
 }

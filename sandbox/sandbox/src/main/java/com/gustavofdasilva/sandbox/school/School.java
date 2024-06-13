@@ -1,8 +1,9 @@
-package com.gustavofdasilva.sandbox;
+package com.gustavofdasilva.sandbox.school;
 
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.gustavofdasilva.sandbox.Student;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

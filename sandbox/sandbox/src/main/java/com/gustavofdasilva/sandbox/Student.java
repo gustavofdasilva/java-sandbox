@@ -1,6 +1,7 @@
 package com.gustavofdasilva.sandbox;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.gustavofdasilva.sandbox.school.School;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
