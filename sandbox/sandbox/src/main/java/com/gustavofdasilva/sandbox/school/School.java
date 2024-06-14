@@ -3,7 +3,7 @@ package com.gustavofdasilva.sandbox.school;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.gustavofdasilva.sandbox.Student;
+import com.gustavofdasilva.sandbox.student.Student;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

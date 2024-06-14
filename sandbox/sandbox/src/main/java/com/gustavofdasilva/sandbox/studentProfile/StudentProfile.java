@@ -1,4 +1,6 @@
-package com.gustavofdasilva.sandbox;
+package com.gustavofdasilva.sandbox.studentProfile;
+
+import com.gustavofdasilva.sandbox.student.Student;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

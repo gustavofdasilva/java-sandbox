@@ -1,4 +1,4 @@
-package com.gustavofdasilva.sandbox;
+package com.gustavofdasilva.sandbox.student;
 
 import java.util.ArrayList;
 import java.util.List;

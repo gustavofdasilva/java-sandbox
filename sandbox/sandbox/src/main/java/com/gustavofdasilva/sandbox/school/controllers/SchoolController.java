@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gustavofdasilva.sandbox.StudentResponseDTO;
 import com.gustavofdasilva.sandbox.school.SchoolDTO;
 import com.gustavofdasilva.sandbox.school.services.SchoolService;
+import com.gustavofdasilva.sandbox.student.StudentResponseDTO;
 
 @RestController
 public class SchoolController {

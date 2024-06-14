@@ -1,4 +1,4 @@
-package com.gustavofdasilva.sandbox;
+package com.gustavofdasilva.sandbox.student;
 
 import org.springframework.stereotype.Service;
 
@@ -25,3 +25,4 @@ public class StudentMapper {
         return new StudentResponseDTO(student.getFirstName(), student.getLastName(), student.getEmail());
     }
 }
+

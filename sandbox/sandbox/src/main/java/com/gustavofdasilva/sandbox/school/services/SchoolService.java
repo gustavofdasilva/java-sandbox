@@ -5,13 +5,13 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.gustavofdasilva.sandbox.Student;
-import com.gustavofdasilva.sandbox.StudentMapper;
-import com.gustavofdasilva.sandbox.StudentResponseDTO;
 import com.gustavofdasilva.sandbox.school.School;
 import com.gustavofdasilva.sandbox.school.SchoolDTO;
 import com.gustavofdasilva.sandbox.school.SchoolMapper;
 import com.gustavofdasilva.sandbox.school.repositories.SchoolRepo;
+import com.gustavofdasilva.sandbox.student.Student;
+import com.gustavofdasilva.sandbox.student.StudentMapper;
+import com.gustavofdasilva.sandbox.student.StudentResponseDTO;
 
 @Service
 public class SchoolService {
