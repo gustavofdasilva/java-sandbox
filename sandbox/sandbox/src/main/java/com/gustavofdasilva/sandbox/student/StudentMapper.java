@@ -7,6 +7,9 @@ import com.gustavofdasilva.sandbox.school.School;
 @Service
 public class StudentMapper {
     public Student toStudent(StudentDTO dto) {
+        if(dto == null) {
+            throw new NullPointerException("The student DTO is null");
+        }
         var student = new Student();
         student.setFirstName(dto.firstName());
         student.setLastName(dto.lastName());
